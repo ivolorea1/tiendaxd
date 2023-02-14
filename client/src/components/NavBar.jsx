@@ -5,11 +5,11 @@ function NavBar() {
   return (
     <>
       <nav className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="relative flex h-16 items-center justify-between font-bold text-lg">
           <div >
             <Link to="/">TodoSport</Link>
           </div>
-          <ul className="flex space-x-4" >
+          <ul className="flex space-x-4 " >
             <li>
               <Link to="/">Contact</Link>
             </li>
