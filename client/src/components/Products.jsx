@@ -4,12 +4,12 @@ import axios from 'axios'
 
 function Products() {
 
-  const [products, setProducts] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
       const result = await axios.get('http://localhost:5000/api/products')
-      setProducts(result.data)
+      setData(result.data)
     }
     getProducts()
   }, [])
@@ -18,8 +18,8 @@ function Products() {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product, i) => (
-            <Link key={i} to={`/${i}`} className="group">
+          {data.map((product, i) => (
+            <Link key={i} to={`/products/${product._id}`} className="group">
               <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 <img
                   src={product.image}

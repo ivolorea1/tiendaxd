@@ -1,21 +1,28 @@
-import React from "react";
+import {React, useState} from "react";
 import { useParams } from "react-router-dom";
-import {Products} from "./Products";
+import axios from "axios";
 
 
-function ProductData({products}) {
-
+function ProductData() {
+    
     const {id} = useParams()
+    
+    const[producto, setProducto] = useState([])
 
+    const getProducto = async () => {
+        const result = await axios.get(`http://localhost:5000/api/products/${id}`)
+        setProducto(result.data)
+    }
+    getProducto()
 
     return ( 
         <div>
-            <img src={products.image} alt={`productoreview${products.title}`} />
-            <h2>{products.title}</h2>
-            <p>{products.description}</p>
-            <button>{products.price}</button>
+            <img src={producto.image} alt={`productoreview${producto._id}`} />
+            <h2>{producto.title}</h2>
+            <p>{producto.description}</p>
+            <button>{producto.price}</button>
         </div>
-     );
+    );
 }
 
 export default ProductData;
